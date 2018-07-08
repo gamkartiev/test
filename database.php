@@ -10,13 +10,13 @@
         if(!mysqli_set_charset($link, "utf8")){
             printf("Error: ".mysqli_error($link));
         }
-        
+                            //Не забыть изменить ip1/ip2/ip3 с int на unsigned int!!
         return $link;
     }
 
 
     function users($link){
-
+        //Вывод всех аккаунтов для админки
         //Запрос
         $query = "SELECT * FROM users ";
         $result = mysqli_query($link, $query);
@@ -33,12 +33,16 @@
         }
         return $users;                       
     }
-    /*if ($user['login']==$login and $user['password']==$password and $ip_local==$user['ip1']||$user['ip2']||$user['ip3']) {
-                echo "Вы успешно авторизировались";
-            }elseif ($user['login']==$login and $user['password']==$password and $ip_local!=$user['ip1']||$user['ip2']||$user['ip3']) {
-                echo "Ваш ip-адресс не найден";
-            }else{
-                echo "Неверная комбинация логина-пароля";
-            }
-    */
+    
+    function user($link, $login, $password){
+        //Вывод аккаунта если совпадают логин и пароль
+
+        $query = 'SELECT*FROM users WHERE login="'.$login.'" AND password="'.$password.'"';
+        $result = mysqli_query($link, $query); //ответ базы запишем в переменную $result
+            if(!$result) die(mysqli_error($link));
+
+        $user = mysqli_fetch_assoc($result); //преобразуем ответ из БД в нормальный массив PHP
+
+        return $user;
+    }
 ?>
