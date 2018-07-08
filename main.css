@@ -11,3 +11,23 @@ table th,td{
 	padding: 5px;
 	color: #a000aa;
 }
+
+form{
+	display: block;
+	width: 25%;
+	margin: 10% auto;
+}
+
+form input{
+	margin: 5px;
+	padding: 5px;
+}
+h2{
+	text-align: center;
+	margin: 3% auto;
+}
+
+a .link{
+	font: 1.5em;
+	color: blue;
+}
